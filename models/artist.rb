@@ -20,14 +20,23 @@ class Artist
     @id = result[0]["id"].to_i
   end
 
+  def self.delete_all()
+    sql ="DELETE FROM artists"
+    SqlRunner.run(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM artists;"
     result = SqlRunner.run(sql)
     return result.map {|result| self.new(result)}
   end
 
-
-
-
+  def album()
+    sql = "SELECT * FROM albums WHERE artist_id = $1"
+    values = [@id]
+    album = SqlRunner.run(sql, values)
+    result = Album.new(album[0])
+    return result
+  end
 
 end
