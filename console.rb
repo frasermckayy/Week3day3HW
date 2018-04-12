@@ -21,6 +21,7 @@ artist2 = Artist.new({
 "genre" => "Rap",
 "age" => "22"
 })
+
 artist2.save()
 
 

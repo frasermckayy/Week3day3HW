@@ -23,7 +23,7 @@ class Album
   end
 
   def self.delete_all()
-    sql ="DELETE FROM albums"
+    sql = "DELETE FROM albums"
     SqlRunner.run(sql)
   end
 
@@ -41,16 +41,16 @@ class Album
   end
 
   def update()
-   sql = "UPDATE albums SET album_name = $1, song_title = $2, artist_id = $3 WHERE id = $4"
-   values = [@album_name, @kynansong_title, @artist_id, @id]
-   SqlRunner.run(sql, values)
-end
+    sql = "UPDATE albums SET album_name = $1, song_title = $2, artist_id = $3 WHERE id = $4"
+    values = [@album_name, @song_title, @artist_id, @id]
+    SqlRunner.run(sql, values)
+  end
 
-def self.find(id)
-   sql ="SELECT * FROM albums WHERE id = $1"
-   values = [id]
-   result = SqlRunner.run(sql, values)
-   return result
-end
+  def self.find(id)
+    sql = "SELECT * FROM albums WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values)
+    return result
+  end
 
 end
